@@ -1,0 +1,23 @@
+services:
+  db:
+    image : mongo
+    container_name: mongo-database-portion
+    restart : always
+    ports :
+      - 27017:27017
+    volumes:
+      - db-mongo:/data/db
+  
+  app: 
+    build: 
+      context: .
+      dockerfile: dockerfile
+    environment:
+      - MONGODB_URL=mongodb://mongo-database-portion:27017/docker_compose
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+  
+volumes:
+  db-mongo:
