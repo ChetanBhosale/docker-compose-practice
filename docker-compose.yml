@@ -18,6 +18,12 @@ services:
       - 3000:3000
     depends_on:
       - db
-  
+    networks:
+      - docker-compose-network
+
 volumes:
   db-mongo:
+
+networks:
+  docker-compose-network:
+    driver: bridge
