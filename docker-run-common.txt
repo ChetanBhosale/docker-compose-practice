@@ -1,0 +1,1 @@
+docker run -e MONGODB_URL=mongodb://mongo:27017/docker_compose --network node-network -p 3000:3000 user-project
